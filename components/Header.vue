@@ -1,3 +1,23 @@
+<script setup lang="ts">
+
+// const path = ref<string>();
+const route = useRoute()
+const path = ref()
+
+onMounted(() => {
+  path.value = route.path
+})
+
+watch(route, () => {
+  path.value = route.path
+})
+
+const checkPath = (link: string) => {
+  return path.value === link;
+}
+
+</script>
+
 <template>
   <div class="header-style">
 
@@ -6,8 +26,8 @@
     <span id="title-style-bold">TICKER</span>
   </div>
     <div class="header-nav">
-  <NuxtLink class="nav-element" to="/">Zeiterfassung</NuxtLink><br />
-  <NuxtLink class="nav-element" to="/stats">Auswertung</NuxtLink>
+  <NuxtLink class="nav-element" :class="{'font-bold': checkPath('/')}" to="/">Zeiterfassung</NuxtLink><br />
+  <NuxtLink class="nav-element" :class="{'font-bold': checkPath('/stats')}"to="/stats">Auswertung</NuxtLink>
     </div>
   </div>
 
@@ -57,5 +77,3 @@
 }
 
 </style>
-<script setup lang="ts">
-</script>
