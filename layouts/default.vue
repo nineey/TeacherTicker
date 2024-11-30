@@ -6,6 +6,14 @@ import Header from "~/components/Header.vue";
 
   <div class="content-wrapper">
     <Header />
+    <div class="content-container"></div>
     <slot />
   </div>
 </template>
+
+<style>
+.content-container {
+  padding: 1em;
+}
+
+</style>
