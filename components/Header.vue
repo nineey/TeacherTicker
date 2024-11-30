@@ -27,7 +27,7 @@ const checkPath = (link: string) => {
   </div>
     <div class="header-nav">
   <NuxtLink class="nav-element" :class="{'font-bold': checkPath('/')}" to="/">Zeiterfassung</NuxtLink><br />
-  <NuxtLink class="nav-element" :class="{'font-bold': checkPath('/stats')}"to="/stats">Auswertung</NuxtLink>
+  <NuxtLink class="nav-element" :class="{'font-bold': checkPath('/stats')}" to="/stats">Auswertung</NuxtLink>
     </div>
   </div>
 
