@@ -1,6 +1,17 @@
+:root {
+    --main-bg-color: #FAF0E6;
+    --main-color: #D9B99B;
+    --btn-active: #FAF0E6;
+    --btn-disabled: rgba(250, 240, 230, 0.5);
+    --btn-hover: rgba(250, 240, 230, 0.7);
+}
+
+html,
 body {
     color: black;
     font-family: "Inter", sans-serif;
+    background-color: var(--main-bg-color);
+
 }
 
 .content-wrapper {
