@@ -13,7 +13,7 @@ import Header from "~/components/Header.vue";
 
 <style>
 .content-container {
-  padding: 1em;
+  margin-top: 3em;
 }
 
 </style>

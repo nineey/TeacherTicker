@@ -1,4 +1,4 @@
-export default defineEventHandler((evebt) => {
+export default defineEventHandler((event) => {
     return {
         api: "works",
     }

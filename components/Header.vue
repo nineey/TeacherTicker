@@ -4,6 +4,7 @@ const user = useSupabaseUser();
 
 const userLogout = async () => {
   await auth.signOut();
+  navigateTo('/login')
 };
 
 // const path = ref<string>();
@@ -38,7 +39,7 @@ const checkPath = (link: string) => {
       <figure
           class="inline-flex h-12 w-12 items-center justify-center rounded-full"
       >
-        <img
+        <img v-if="user"
             class="rounded-full"
             src="https://xsgames.co/randomusers/avatar.php?g=pixel"
             alt=""
