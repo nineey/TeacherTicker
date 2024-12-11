@@ -1,59 +1,43 @@
 <script setup>
-import VueDatePicker from '@vuepic/vue-datepicker'
 import '@vuepic/vue-datepicker/dist/main.css'
-import {store} from "~/composables/store.ts";
+import WeeklyOverview from "~/components/WeeklyOverview.vue";
+// import {definePageMeta} from "nuxt/dist/pages/runtime/index.js";
+//
+// definePageMeta({
+//   middleware: [
+//       'auth'
+//   ]
+// })
 
 const user = useSupabaseUser();
-const checkIn = ref(false)
-const checkOut =ref(false)
-const timeIn = ref({
-  hours: new Date().getHours(),
-  minutes: new Date().getMinutes()
-});
-const timeOut = ref({
-  hours: 0,
-  minutes: 0,
-});
 
-const writeTimeStamp = () => {
-  if (!checkIn.value) {
-    timeIn.value.hours = useTimestamp().hours
-    timeIn.value.minutes = useTimestamp().minutes
-  }
-  else {
-    timeOut.value.hours = useTimestamp().hours
-    timeOut.value.minutes = useTimestamp().minutes
-    checkOut.value = true
-  }
-
-  checkIn.value = !checkIn.value
-};
-
-onMounted(() => {
-  const today = new Date();
-  store.selectedDate.value = today;
-  console.log(store.selectedDate.value)
-
-  timeIn.value.hours = today.getHours()
-  timeIn.value.minutes = today.getMinutes()
-})
+// import { createClient } from '@supabase/supabase-js'
+//
+// // Create a single supabase client for interacting with your database
+// const supabase = createClient('process.env.SUPABASE_URL', 'process.env.SUPABASE_KEY')
+//
+// async function getData() {
+//   const { data: time_entries, error } = await supabase
+//       .from('time_entries')
+//       .select('*')
+//   console.log(time_entries)
+// }
+//
+// getData()
 
 </script>
 
 <template>
 
   <div class="content-container">
-    <p class="mb-3">Aktueller User: {{user.email}}</p>
+    <p class="mb-3" v-if="user">Aktueller User: {{user.email}}</p>
 
-
-
-
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 h-48">
-      <DailyTimer></DailyTimer>
-      <div class="bg-[#D9B99B] rounded-xl p-6">01</div>
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 h-48">
+      <DailyTimer />
       <div class="bg-[#D9B99B] rounded-xl p-6">
-        <VueDatePicker class="basis-1/4" v-model="store.selectedDate" inline auto-apply />
+        <DatePicker />
       </div>
+      <div class="bg-[#D9B99B] rounded-xl p-6"><WeeklyOverview /></div>
     </div>
 
   </div>

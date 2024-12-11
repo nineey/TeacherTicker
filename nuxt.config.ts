@@ -20,5 +20,12 @@ supabase: {
     callback: '/',
     exclude: ['/', '/register'],
   },
-}
+},
+  runtimeConfig: {
+     // can be overridden by NUXT_API_SECRET environment variable
+    public: {
+      supabaseUrl: process.env.NUXT_PUBLIC_SUPABASE_URL,
+      supabaseKey: process.env.NUXT_PUBLIC_SUPABASE_KEY,
+    }
+  },
 })
