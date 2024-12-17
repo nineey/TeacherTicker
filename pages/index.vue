@@ -1,46 +1,43 @@
-<script setup>
+<script setup lang="ts">
 import '@vuepic/vue-datepicker/dist/main.css'
 import WeeklyOverview from "~/components/WeeklyOverview.vue";
-// import {definePageMeta} from "nuxt/dist/pages/runtime/index.js";
-//
-// definePageMeta({
-//   middleware: [
-//       'auth'
-//   ]
-// })
 
 const user = useSupabaseUser();
-
-// import { createClient } from '@supabase/supabase-js'
-//
-// // Create a single supabase client for interacting with your database
-// const supabase = createClient('process.env.SUPABASE_URL', 'process.env.SUPABASE_KEY')
-//
-// async function getData() {
-//   const { data: time_entries, error } = await supabase
-//       .from('time_entries')
-//       .select('*')
-//   console.log(time_entries)
-// }
-//
-// getData()
 
 </script>
 
 <template>
 
-  <div class="content-container">
     <p class="mb-3" v-if="user">Aktueller User: {{user.email}}</p>
 
-    <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 h-48">
-      <DailyTimer />
-      <div class="bg-[#D9B99B] rounded-xl p-6">
-        <DatePicker />
+  <div class="flex gap-4 flex-wrap md:flex-nowrap">
+
+    <div>
+      <h1 class="font-bold mb-5">Zeiterfassung</h1>
+        <div class="flex bg-[#ECD7C1] rounded-2xl h-full">
+          <div class="bg-[#D9B99B] rounded-xl p-6">
+            <DailyTimer class="" />
+          </div>
+          <div>
+          <DatePicker class=""/>
+          </div>
+        </div>
+    </div>
+
+    <div class="xl:mt-0 mt-20">
+      <h1 class="font-bold mb-5">Übersicht</h1>
+      <div class="bg-[#D9B99B] rounded-xl p-6 grow shrink h-full">
+        <WeeklyOverview />
       </div>
-      <div class="bg-[#D9B99B] rounded-xl p-6"><WeeklyOverview /></div>
     </div>
 
   </div>
 
-
 </template>
+
+<style scoped>
+
+
+</style>
+
+

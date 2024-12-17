@@ -61,8 +61,7 @@ const checkPath = (link: string) => {
 
 <style>
 .header-style {
-  background-color: var(--main-color);
-  color: #000;
+  background-color: var(--primary-color);
   height: 80px;
   display: flex;
   justify-content: space-between;
@@ -79,7 +78,7 @@ const checkPath = (link: string) => {
 }
 
 .header-nav .nav-element {
-  background-color: var(--btn-active);
+  background-color: var(--cta-color);
   padding: 1em;
   border-radius: 16px;
 }
