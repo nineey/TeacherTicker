@@ -83,8 +83,8 @@ const calculateTotalTime = () => {
       Ausgewählter Tag: {{ useStore.selectedDate.toLocaleDateString('de-DE', {weekday: 'long', year: 'numeric', month: 'long', day: 'numeric'}) }}
     </p>
 
-    <input v-model="logTimeCheckIn" type="time" id="appt" name="appt" min="09:00" max="22:00" value="00:00" required class="bg-gray-100 rounded-2xl px-3 py-2 mr-2" />
-    <input v-model="logTimeCheckOut" type="time" id="appt" name="appt" min="09:00" max="18:00" value="00:00" required class="bg-gray-100 rounded-2xl px-3 py-2" />
+    <input v-model="logTimeCheckIn" type="time" id="appt" name="appt" min="09:00" max="22:00" required class="bg-gray-100 rounded-2xl px-3 py-2 mr-2" />
+    <input v-model="logTimeCheckOut" type="time" id="appt" name="appt" min="09:00" max="18:00" required class="bg-gray-100 rounded-2xl px-3 py-2" />
 
     <div class="mt-5">
       <p class="font-bold">Pause</p>
