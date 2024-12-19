@@ -26,6 +26,7 @@ const userLogin = async () => {
 
 watchEffect(() => {
   if (user.value) {
+    console.log(auth.getSession())
     return navigateTo('/');
   }
 });

@@ -3,6 +3,7 @@ import '@vuepic/vue-datepicker/dist/main.css'
 import WeeklyOverview from "~/components/WeeklyOverview.vue";
 
 const user = useSupabaseUser();
+console.log(user.getS)
 
 </script>
 
