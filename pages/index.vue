@@ -3,7 +3,19 @@ import '@vuepic/vue-datepicker/dist/main.css'
 import WeeklyOverview from "~/components/WeeklyOverview.vue";
 
 const user = useSupabaseUser();
-console.log(user.getS)
+
+const quoteOfTheDay = ref<{} | null>(null);
+
+const getQuotes = async () => {
+  const {data: quote} = await useFetch('/api/dailyQuote', {});
+  console.log(quote.value.api.quote);
+  quoteOfTheDay.value = {author: quote.value.api.author, quote: quote.value.api.quote};
+}
+
+getQuotes()
+
+const { quoteTest } = await useFetch('/api/dailyQuote', {});
+
 
 </script>
 
@@ -11,6 +23,8 @@ console.log(user.getS)
 
     <p class="mb-3" v-if="user">Aktueller User: {{user.email}}</p>
 
+  <p v-if="quoteOfTheDay">Quote of the day: "{{ quoteOfTheDay.quote }}" by {{ quoteOfTheDay.author }}</p>
+<p>{{ quoteTest }}</p>
   <div class="flex gap-4 flex-wrap md:flex-nowrap">
 
     <div>

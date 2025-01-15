@@ -50,21 +50,21 @@ const calculateTotalTime = () => {
 }
 
 
-// Persistance
-// onMounted(() => {
-//   logTimeCheckIn.value = localStorage.getItem('logTimeCheckIn')
-//   logTimeCheckOut.value = localStorage.getItem('logTimeCheckOut')
-//
-// })
-//
-// watch([logTimeCheckIn, logTimeCheckOut], () => {
-//   localStorage.setItem('logTimeCheckIn', logTimeCheckIn.value)
-//   console.log(localStorage.getItem('logTimeCheckIn'))
-//
-//   localStorage.setItem('logTimeCheckOut', logTimeCheckOut.value)
-//   console.log(localStorage.getItem('logTimeCheckOut'))
-//
-// });
+//Persistance
+onMounted(() => {
+  logTimeCheckIn.value = localStorage.getItem('logTimeCheckIn')
+  logTimeCheckOut.value = localStorage.getItem('logTimeCheckOut')
+
+})
+
+watch([logTimeCheckIn, logTimeCheckOut], () => {
+  localStorage.setItem('logTimeCheckIn', logTimeCheckIn.value)
+  console.log(localStorage.getItem('logTimeCheckIn'))
+
+  localStorage.setItem('logTimeCheckOut', logTimeCheckOut.value)
+  console.log(localStorage.getItem('logTimeCheckOut'))
+
+});
 
 
 </script>
@@ -72,7 +72,6 @@ const calculateTotalTime = () => {
 <template>
 <div>
 
-    <!-- Fixed: Removed redundant :class binding -->
     <div class="bg-[#ECD7C1] transition-all w-48 duration-500 h-12 flex items-center rounded-2xl">
       <button @click="checkInOrOut(checkedInBoolean)" :disabled="trackOfCheckInAndOut.checkOut" :class="{'on': checkedInBoolean}" class="w-28 h-12 btn-test bg-[#FAF0E6] rounded-2xl shadow-md disabled:opacity-50">
         {{checkedInBoolean ? "Check-Out" : "Check-In"}}
@@ -83,7 +82,8 @@ const calculateTotalTime = () => {
       Ausgewählter Tag: {{ useStore.selectedDate.toLocaleDateString('de-DE', {weekday: 'long', year: 'numeric', month: 'long', day: 'numeric'}) }}
     </p>
 
-    <input v-model="logTimeCheckIn" type="time" id="appt" name="appt" min="09:00" max="22:00" required class="bg-gray-100 rounded-2xl px-3 py-2 mr-2" />
+  <button v-if="!trackOfCheckInAndOut.checkIn" @click="checkInOrOut(checkedInBoolean)" class="bg-gray-100 w-20 hover:bg-gray-200 rounded-2xl px-2 py-2 mr-2">CheckIn</button>
+    <input v-else v-model="logTimeCheckIn" type="time" id="appt" name="appt" min="09:00" max="22:00" required class="bg-gray-100 w-20 rounded-2xl px-3 py-2 mr-2 text-center"  />
     <input v-model="logTimeCheckOut" type="time" id="appt" name="appt" min="09:00" max="18:00" required class="bg-gray-100 rounded-2xl px-3 py-2" />
 
     <div class="mt-5">
