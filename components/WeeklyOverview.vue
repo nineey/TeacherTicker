@@ -1,15 +1,19 @@
 <script setup lang="ts">
 import {insertDateToDB} from "~/composables/useInsertToDB";
 import {getTimes} from "~/composables/useLoadData";
-import {useStore} from "~/composables/useStore";
+import {useStore2} from "~/composables/useStore";
+import {toRefs} from "vue";
+
 
 const times: any = ref([])
+const {selectedDate} = toRefs(useStore2())
 
 onMounted(async() => {
   times.value = await getTimes()
+  console.log(selectedDate)
 })
 
-watch(useStore.selectedDate, () => times.value = getTimes())
+watch(useStore.selectedDate, () => console.log(selectedDate))
 
 </script>
 
